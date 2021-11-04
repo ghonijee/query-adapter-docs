@@ -1,0 +1,19 @@
+{
+  "name": "query-adapter-docs",
+  "version": "0.0.1",
+  "description": "The official documentation for query-adapter package",
+  "main": "index.js",
+  "authors": {
+    "name": "ghonijee",
+    "email": "akughoni@gmail.com"
+  },
+  "repository": "https://github.com/ghonijee/query-adapter-docs.git/query-adapter-docs",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  }
+}
