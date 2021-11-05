@@ -45,34 +45,38 @@ module.exports = {
     lastUpdated: false,
     nav: [{
         text: 'Documentation',
-        link: '/introduction/',
-      },
-      {
-        text: 'Config',
-        link: '/config/'
+        link: '/docs/',
       },
       {
         text: 'GitHub',
         link: 'https://github.com/ghonijee/laravel-query-adapter'
       }
     ],
-    sidebar: {
-      '/introduction/': [{
+    sidebar: [{
         title: 'Getting Started',
-        collapsable: false,
+        collapsable: false, // optional, defaults to true
+        sidebarDepth: 1, // optional, defaults to 1
         children: [
-          '',
-          'instalation',
+          '/docs/',
+          '/docs/instalation',
         ]
-      }],
-    }
-  },
+      },
+      {
+        title: "Features",
+        collapsable: false,
+        sidebarDepth: 1,
+        children: [
+          '/docs/features/filter'
+        ]
+      }
+    ],
 
-  /**
-   * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
-   */
-  plugins: [
-    '@vuepress/plugin-back-to-top',
-    '@vuepress/plugin-medium-zoom',
-  ]
+    /**
+     * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
+     */
+    plugins: [
+      '@vuepress/plugin-back-to-top',
+      '@vuepress/plugin-medium-zoom',
+    ]
+  }
 }
