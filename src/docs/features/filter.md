@@ -8,9 +8,6 @@ return [
     'request' => [
         'filter' => 'filter', // change this value to custom keyword
     ],
-    'query' => [
-        'contains' => 'LIKE'
-    ]
 ];
 ```
 
@@ -24,7 +21,7 @@ Request format to build data filter query can be seen in the example below this:
 ```
 The condition already supported for this package can see in the next section by filtering data type.
 
-### Multi Filtering
+### Multiple Conditions
 
 If you want to add multiple conditions, enough to make the request filter data a multidimensional array. Look example:
 ```json
@@ -39,26 +36,53 @@ Between the two existing conditions, there is a conjunction. A conjunction is an
 | or | `orWhere('fieldName','like','value')` |
 | ! | `where('fieldName','not like','value%')` |
 
+### Build Query
+
+```link
+https://example.com/user?filter=['name','contains','jee']
+```
+and use `QueryAdapter` on your controller to handle the request
+```php
+
+use GhoniJee\DxAdapter\QueryAdapter;
+
+$data = QueryAdapter::for(User::class)->get()
+
+```
+That request will generate/build a query to get user data that contains "jee" on their name.
+
 ## String Filter
+
+Coming soon
 
 ### Condition
 
 ## Numeric Filter
 
+Coming soon
+
 ### Condition
 
 ## Date Filter
+
+Coming soon
 
 ### Condition
 
 ## Boolean Filter
 
+Coming soon
+
 ### Condition
 
 ## Null Filter
 
+Coming soon
+
 ### Condition
 
 ## Relation Filter
+
+Coming soon
 
 ### Condition

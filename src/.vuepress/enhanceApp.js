@@ -10,5 +10,16 @@ export default ({
   router, // the router instance for the app
   siteData // site metadata
 }) => {
-  // ...apply enhancements for the site.
+  router.beforeEach((to, from, next) => {
+    const redirectList = {
+      '/': '/docs/',
+    }
+    const redirect = redirectList[to.path]
+
+    if (redirect) {
+      next({
+        path: redirect
+      })
+    } else next()
+  })
 }

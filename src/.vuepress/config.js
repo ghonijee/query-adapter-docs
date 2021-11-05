@@ -64,7 +64,7 @@ module.exports = {
       {
         title: "Features",
         collapsable: false,
-        sidebarDepth: 1,
+        sidebarDepth: 2,
         children: [
           '/docs/features/filter'
         ]
