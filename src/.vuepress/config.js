@@ -53,7 +53,7 @@ module.exports = {
       }
     ],
     sidebar: [{
-        title: 'Getting Started',
+        title: 'GETTING STARTED',
         collapsable: false, // optional, defaults to true
         sidebarDepth: 1, // optional, defaults to 1
         children: [
@@ -62,9 +62,9 @@ module.exports = {
         ]
       },
       {
-        title: "Features",
+        title: "FEATURES",
         collapsable: false,
-        sidebarDepth: 2,
+        sidebarDepth: 1,
         children: [
           '/docs/features/filter'
         ]

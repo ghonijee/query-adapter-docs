@@ -38,7 +38,7 @@ Between the two existing conditions, there is a conjunction. A conjunction is an
 
 ### Build Query
 
-```link
+``` link
 https://example.com/user?filter=['name','contains','jee']
 ```
 and use `QueryAdapter` on your controller to handle the request
@@ -53,15 +53,59 @@ That request will generate/build a query to get user data that contains "jee" on
 
 ## String Filter
 
-Coming soon
+Kamu dapat melakukan filter data yang memiliki value string. Seperti menggunakan operator `LIKE` pada query `WHERE`. Hebatnya `QueryAdapter` mampu menyediakan beberapa kondisi untuk filter dengan value string. 
 
 ### Condition
+
+| Condition | Query Builder |
+:--|:--|
+| contains | `where('fieldName','like','%value%')` |
+| notcontains | `where('fieldName','not like','value')`|
+| startswith | `where('fieldName','like','value%')` |
+| endswith | `where('fieldName','like','%value')` |
+| = | `where('fieldName', 'value%')` |
+| != | `where('fieldName', '!=','value%')` |
+
+Selain 5 kondisi teratas yang ada ditable tersebut, operator kondisi yang kamu kirimkan akan menjadi operator pada kondisi `where`.
+
+### Example
+
+#### Contains
+
+``` link
+https://example.com/user?filter=['name','contains','jee']
+```
+
+#### Other contion
+
+``` link
+https://example.com/user?filter=['name','<>','jee']
+```
+
 
 ## Numeric Filter
 
-Coming soon
+Jika kamu ingin melalukan filter berdasarkan data dengan type numeric, seperti harga, umur, jumlah, dll. Tentu saja `QueryAdapter` dapat melakukannya berdasarkan request data yang kamu kirim. 
 
-### Condition
+Kamu bisa menggunakan [comparison operators](https://www.w3schools.com/sql/sql_operators.asp) sebagai kondisi, seperti `= , !=, <, >, <=, >=, <>, etc`. QueryAdapter akan menggunakannya sebagai operator pada query `where`.
+
+### Example
+
+#### Equal (=)
+
+``` php
+// GET => https://example.com/user?filter=['age','=', 20]
+
+->where('age', '=',20)
+```
+
+#### Less than or equal to (<=)
+
+``` php
+// GET => https://example.com/product?filter=['price','<=','100000']
+
+->where('price', '<=',100000)
+```
 
 ## Date Filter
 
