@@ -16,7 +16,7 @@ return [
 ### Format
 
 Request format to build data filter query can be seen in the example below this:
-```json
+```
 ['field_name','condition','value']
 ```
 The condition already supported for this package can see in the next section by filtering data type.
@@ -24,7 +24,7 @@ The condition already supported for this package can see in the next section by 
 ### Multiple Conditions
 
 If you want to add multiple conditions, enough to make the request filter data a multidimensional array. Look example:
-```json
+```
 [['field_name','condition','value'],'conjungtion',['field_name','condition','value']]
 ```
 
@@ -51,9 +51,10 @@ $data = QueryAdapter::for(User::class)->get()
 ```
 That request will generate/build a query to get user data that contains "jee" on their name.
 
+
 ## String Filter
 
-Kamu dapat melakukan filter data yang memiliki value string. Seperti menggunakan operator `LIKE` pada query `WHERE`. Hebatnya `QueryAdapter` mampu menyediakan beberapa kondisi untuk filter dengan value string. 
+You can use a QueryAdapter to filter data by string values. Like using the query operator `LIKE` with the condition `WHERE`. Of course, `QueryAdapter` can build a query with some option condition.
 
 ### Condition
 
@@ -63,31 +64,33 @@ Kamu dapat melakukan filter data yang memiliki value string. Seperti menggunakan
 | notcontains | `where('fieldName','not like','value')`|
 | startswith | `where('fieldName','like','value%')` |
 | endswith | `where('fieldName','like','%value')` |
-| = | `where('fieldName', 'value%')` |
-| != | `where('fieldName', '!=','value%')` |
 
-Selain 5 kondisi teratas yang ada ditable tersebut, operator kondisi yang kamu kirimkan akan menjadi operator pada kondisi `where`.
+As previously mentioned, you may use any operator that is supported by your database. That operator will be assigned to `WHERE` condition.
 
 ### Example
 
 #### Contains
 
-``` link
-https://example.com/user?filter=['name','contains','jee']
+``` php
+// GET => https://example.com/user?filter=['name','contains','jee']
+
+->where('name','LIKE','%jee%')
 ```
 
-#### Other contion
+#### Other condition
 
-``` link
-https://example.com/user?filter=['name','<>','jee']
+``` php
+// GET => https://example.com/user?filter=['name','!=','jee']
+
+->where('name','!=','jee')
 ```
 
 
 ## Numeric Filter
 
-Jika kamu ingin melalukan filter berdasarkan data dengan type numeric, seperti harga, umur, jumlah, dll. Tentu saja `QueryAdapter` dapat melakukannya berdasarkan request data yang kamu kirim. 
+You want to do filter data by numeric value, like filter data by price, age, amount, etc. Of course, this package can do that from params data on your request.
 
-Kamu bisa menggunakan [comparison operators](https://www.w3schools.com/sql/sql_operators.asp) sebagai kondisi, seperti `= , !=, <, >, <=, >=, <>, etc`. QueryAdapter akan menggunakannya sebagai operator pada query `where`.
+You can use [comparison operators](https://www.w3schools.com/sql/sql_operators.asp) as filter condition, like `=, !=, <, >, <=, >=, <>, etc`. `QueryAdapter` will use the contion as operator on query `WHERE`. 
 
 ### Example
 
@@ -109,9 +112,16 @@ Kamu bisa menggunakan [comparison operators](https://www.w3schools.com/sql/sql_o
 
 ## Date Filter
 
-Coming soon
+Sometimes we need to filter data by date like we want to get a list of users created on a specific date. `QueryAdapter` can help you build a query to filter data from a field or data with a date value.
+
+You can use several conditions to filter data by date type.
 
 ### Condition
+
+| Condition | Query Builder |
+:--|:--|
+| = | `where('fieldName',''21-09-2021'')` |
+| < | `whereDate('fieldName','<', '22-08-2021')`|
 
 ## Boolean Filter
 

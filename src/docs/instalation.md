@@ -23,7 +23,7 @@ $data = QueryAdapter::for(User::class)->get()
 ```
 
 * Build custom query without DataGrid, by sending data from the request.
-```link
+```
 https://example.com/user?filter=['name','contains','jee']
 ```
 and use `QueryAdapter` on your controller to handle the request
@@ -35,3 +35,13 @@ $data = QueryAdapter::for(User::class)->get()
 
 ```
 That request will generate/build a query to get user data that contains "jee" on their name.
+
+## Publish Config
+
+The package will automatically register its service provider and config, but you can optionally publish the config file with:
+
+```bash
+php artisan vendor:publish --provider="GhoniJee\DxAdapter\DxAdapterServiceProvider" 
+```
+
+After publish the config, you can customize request key and query for `QueryAdapter`.
